@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <link  rel="icon"   type="image/png" sizes="32x32" href="./assets/icon/favicon-32x32.png" />
+    <link rel="Website Icon" type="png" href="./assets/image/websiteLogo/logo.png" />
+    <link rel="stylesheet" href="./assets/style/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a57cf1d88d.js" crossorigin="anonymous" defer></script>
+    <script src="/js/index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+  
+    <title>Frontend Mentor | 3-column preview card component</title>
+    
+    <body>
+        
+        <div id="container">
+       
+
+            <header>
+                  <p> Hello, <span id="userName"></span></p>
+                  <span  id='openOverlay' class="settingOverlay"><i class="fa-solid fa-gear"></i></span>
+              </header>
+              <main>
+                  <p>Today, you have drunk <span id="dailyDrink"></span></p>
+                
+                  <section>
+                    <div class="progress-wrap progress" data-progress-percent="">
+                          <div class="progress-bar progress"></div>
+                        
+                        </div> 
+                        <p id="dailyProgress"></p>
+                  </section>
+                  <section>
+      
+                  
+                    <div id="weekly-stats" class="stats-content" style="display: none;">
+                      <!-- Contenu pour les statistiques hebdomadaires -->
+                      <p>Statistiques Hebdomadaires</p>
+                    </div>
+                    <div id="monthly-stats" class="stats-content">
+                      <!-- Contenu pour les statistiques mensuelles -->
+                      <p>Statistiques Mensuelles</p>
+                    </div>
+                    <div id="yearly-stats" class="stats-content" style="display: none;">
+                      <!-- Contenu pour les statistiques annuelles -->
+                      <p>Statistiques Annuelles</p>
+                    </div>
+                     <div class="tabs">
+                      <button class="tab-btn weekly-period" onclick="showStats('weekly')">weekly</button>
+                      <button class="tab-btn monthly-period active" onclick="showStats('monthly')">monthly</button>
+                      <button class="tab-btn yearly-period" onclick="showStats('yearly')">yearly</button>
+                    </div>
+                  </section>
+                
+                  <section>
+                      <button id='openOverlay' class="addCupOverlay" ><i class="fa-solid fa-glass-water"></i></button>
+                  </section>
+              </main>
+              <footer>Coded by <a id="link" href="https://bento.me/404diaby">404diaby</a></footer>
+ 
+          
+        </div> 
+        <div id="addCupOverlay" >
+             
+          <span class="overlayTitre">Add an quatity</span>
+          <span>
+            <button id="addOneCup" name="addOneCup" > One Cup</button>
+          </span> 
+          <span>
+            OR         
+          </span> 
+          <form id="monFormulaire2" action="#"> 
+          <span>
+              <input id="addQuantity" name="addQuantity" type="number">
+              <input id="submit" name="submit" type="submit"  value="add"> 
+               
+            </span>
+        
+          </form>
+     </div>
+
+      <div id="settingOverlay" >
+             
+                 <span class="overlayTitre">Settings</span>
+              <form id="monFormulaire" action="#">
+                <span>
+                  <label for="name"> Your name :
+                    <input id="name" name="name" type="text">
+                  </label>             
+                </span>
+                <span>
+                  <label for="cup"> One cup for you ?</label>  
+                  <span> 
+                    <input id="cup" name="cup" type="range" min=".25" max="5" step=".25" list="tickmark">
+                    <!--<datalist id="tickmark">
+                      <option value=".25" label="0%"></option>
+                      <option value=".5"></option>
+                      <option value=".75"></option>
+                      <option value="1"></option>
+                      <option value="1.25" label="25%"></option>
+                      <option value="1.5" ></option>
+                      <option value="1.75"></option>
+                      <option value="2"></option>
+                      <option value="2.25"></option>
+                      <option value="2.5" label="50%"></option>
+                      <option value="2.75" ></option>
+                      <option value="3" ></option>
+                      <option value="3.25" label="75%"></option>
+                      <option value="3.5" ></option>
+                      <option value="3.75" ></option>
+                      <option value="4" ></option>
+                      <option value="4.25" ></option>
+                      <option value="4.5" ></option>
+                      <option value="4.75"></option>
+                      <option value="5" label="100%"></option>
+                    
+
+                      </datalist>-->
+                    <span id="cuptxt"></span>
+                    </span>
+                            
+                </span>
+                <span>
+                  <label for="goal"> Your goal !!
+                  </label>  
+                  <span>
+                    <input id="goal" name="goal" type="range"  min="1" max="10"  step=".5" list="tickmark-" >
+<datalist id="tickmark-">
+<option value="1" label="0%"></option>
+<option value="1.5"></option>
+<option value="2"></option>
+<option value="2.5"></option>
+<option value="3"></option>
+<option value="3.5" label="50%"></option>
+<option value="4"></option>
+<option value="4.5"></option>
+<option value="5"></option>
+<option value="5.5"></option>
+<option value="6" label="100%"></option>
+<option value="6.5" label="100%"></option>
+<option value="7" label="100%"></option>
+<option value="7.5" label="100%"></option>
+<option value="8" label="100%"></option>
+<option value="8.5" label="100%"></option>
+<option value="9" label="100%"></option>
+<option value="9.5" label="100%"></option>
+<option value="10" label="100%"></option>
+</datalist>
+                    <span id="goaltxt"></span>
+                    
+                       </span>       
+                </span>
+                    <input id="submit" name="submit" type="submit"  value="save" > 
+                    
+                </span>
+              </form>
+              
+             
+            </div>
+    </body>
+  
+<script>
+
+    /*
+    utilisateurs.forEach(utilisateur => {
+      console.log(`ID: ${utilisateur.id}, Nom: ${utilisateur.nom}`);
+   */
+
+  //ajouter la cup dans le dailydrink
+  /*
+  const oneCupBtn = document.querySelector("#openOneCupOverlay");
+ 
+  oneCupBtn.addEventListener('click', function addCup(){
+monFichierJSON.newVariable = 42;*/
+    /*
+    const onecup = monFichierJSON.onecup;
+    const dailydrink = monFichierJSON.dailydrink;
+   
+    const newDailyDrink = parseFloat(dailydrink) + parseFloat(onecup);
+    monFichierJSON.dailydrink=newDailyDrink;
+    console.log(monFichierJSON.dailydrink);
+
+console.log('add water cup avec succès.');
+location.reload();*/
+//});
+
+  
+
+
+</script>
+  <script>
+    //variable globale
+    //let userName = document.querySelector('#userName').innerText = localStorage.getItem('userName');
+
+/*
+localStorage.setItem('oneCup', 0.25)
+    let oneCup =  parseFloat(localStorage.getItem('oneCup')); 
+    let dailyDrink
+
+    console.log(localStorage.getItem('dailyDrink') == NaN)
+    if( localStorage.getItem('dailyDrink') == NaN){
+ dailyDrink= parseFloat(localStorage.getItem('dailyDrink'))
+ document.querySelector('#dailyDrink').innerHTML = `${localStorage.getItem('dailyDrink')} litres`
+    
+    }else{ localStorage.setItem('dailyDrink', 0)
+      dailyDrink= parseFloat(localStorage.getItem('dailyDrink'))
+      document.querySelector('#dailyDrink').innerHTML = `${localStorage.getItem('dailyDrink')} litres`
+    
+    }*/
+     /*  localStorage.setItem('dailyGoal', 350);
+
+        console.log( document.querySelector('.progress-wrap').attributes[1].value)
+    let dailyGoal  =  document.querySelector('.progress-wrap').attributes[1].value =  localStorage.getItem('dailyGoal')
+    
+
+*/
+
+
+
+
+
+
+//fonction
+/*
+document.getElementById('monFormulaire').addEventListener('submit', function(event) {
+  // attezntion champ vide
+  // Empêcher le comportement par défaut du formulaire (rechargement de la page)
+ // event.preventDefault();
+
+  // Créer un objet FormData à partir du formulaire
+  const formData = new FormData(event.target);
+
+  // Extraire la valeur du champ d'entrée nom
+  userName = formData.get('name');
+  localStorage.setItem('userName', userName);
+
+
+console.log('Nom enregistré avec succès.');
+ 
+
+})*/
+
+    // Adds a progress bar to show upload progress
+/*
+
+const openSettingOverlay = document.querySelector("#openSettingOverlay");
+const openOneCupOverlay = document.querySelector('#openOneCupOverlay');
+const closeOverlay = document.querySelector("main");
+const settingOverlay = document.querySelector('#settingOverlay ');
+openSettingOverlay.addEventListener('click', function (e) { 
+  closeOverlay.classList.add('blur');
+  if(e.currentTarget.id == 'openSettingOverlay') {
+    console.log(document.querySelector("#name").setAttribute("placeholder", `${userName}` )); 
+    
+    settingOverlay.style.bottom = '0'; 
+  }
+       
+
+});*/
+/*
+openOneCupOverlay.addEventListener('click', function (e) { 
+  closeOverlay.classList.add('blur');
+  if(e.currentTarget.id == 'openOneCupOverlay') {
+    settingOverlay.style.bottom = '0'; 
+  }
+      
+});
+*/
+/*
+closeOverlay.addEventListener('click', function (e) {
+    if(e.currentTarget.tagName == 'MAIN'){
+      console.log(e.currentTarget.tagName);
+     closeOverlay.classList.remove('blur');
+     settingOverlay.style.bottom = '-400px'; 
+    }
+});*/
+
+/*
+       closeOverlay.addEventListener('click', function (e) { 
+        console.log(e.target.id)
+        if( overlayArea.style.opacity === '1' || e.target.id == 'main'){
+           console.log(overlayArea.style.opacity)
+      
+       
+        overlayArea.style.transform = 'translateY(800px)'
+        overlayArea.style.opacity = '0'
+    
+        }  
+       
+   
+  
+  })*/
+
+
+   /*   const openOverlayArea = document.querySelector("#openOverlay")
+      const main = document.querySelector("#main")
+      const overlayArea = document.querySelector('#settingOverlay ')
+      
+      openOverlayArea.addEventListener('click', function (e) { 
+        //main.classList.add('blur');
+        console.log(e.currentTarget.id)
+       if(e.currentTarget.id == 'openOverlay') {
+        
+        overlayArea.style.transform = "translateY(400px)"
+        overlayArea.style.opacity = '1'
+       }
+
+       })
+
+      main.addEventListener('click', function (e) { 
+        console.log(e.target.id)
+        if( overlayArea.style.opacity === '1' || e.target.id == 'main'){
+           console.log(overlayArea.style.opacity)
+      
+       
+        overlayArea.style.transform = 'translateY(800px)'
+        overlayArea.style.opacity = '0'
+    
+        }  
+       
+   
+  
+  })*/
+      
+//===================
+
+
+    
+
+//==============
+
+
+    
+
+
+
+
+
+
+
+  </script>
+  <script>
+  
+
+</script>
+  <script>
+  
+
+
+  </script>
+</html>
